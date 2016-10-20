@@ -3,7 +3,7 @@
  * https://github.com/facebook/react-native
  * @flow
  */
-
+import Button from 'apsl-react-native-button'
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -17,15 +17,16 @@ export default class Jobber extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          Jobber
         </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+        <Button style={styles.buttonConnexion}>
+          Connexion
+        </Button>
+        <Button style={styles.buttonInscription}>
+          Registration
+        </Button>
+        
+        
       </View>
     );
   }
@@ -34,19 +35,26 @@ export default class Jobber extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#14c8b9',
+    justifyContent: 'center',
+
   },
   welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+    fontSize: 60,
+    color: 'yellow',
+    marginTop: 40,
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  
+  buttonConnexion: {
+    marginLeft: 120,
+    marginTop : 30,
+    width: 140,
+  },
+  buttonInscription : {
+    marginLeft: 120,
+    marginTop : 10,
+    width: 140,
   },
 });
 
