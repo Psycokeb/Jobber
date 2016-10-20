@@ -3,29 +3,53 @@
  * https://github.com/facebook/react-native
  * @flow
  */
-
+import Button from 'apsl-react-native-button'
 import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Navigator,
+  TouchableHighlight
 } from 'react-native';
+
 
 export default class Jobber extends Component {
   render() {
+    const routes = [
+      {title: 'First Scene', index: 0},
+      {title: 'Second Scene', index: 1},
+    ];
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          Jobber
         </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
+        <Button style={styles.buttonConnexion}>
+          Connexion
+        </Button>
+        <Button style={styles.buttonInscription}>
+          Registration
+        </Button>  
+
+        <Navigator
+          initialRoute={routes[0]}
+          initialRouteStack={routes}
+          renderScene={(route, navigator) =>
+            <TouchableHighlight onPress={() => {
+              if (route.index === 0) {
+                navigator.push(routes[1]);
+              } else {
+                navigator.pop();
+              }
+            }}>
+            <Text>Hello {route.title}!</Text>
+            </TouchableHighlight>
+          }
+          style={{padding: 100}}
+        />
+        
       </View>
     );
   }
@@ -34,19 +58,26 @@ export default class Jobber extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#14c8b9',
+    justifyContent: 'center',
+
   },
   welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+    fontSize: 60,
+    color: 'yellow',
+    marginTop: 40,
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  
+  buttonConnexion: {
+    marginLeft: 120,
+    marginTop : 30,
+    width: 140,
+  },
+  buttonInscription : {
+    marginLeft: 120,
+    marginTop : 10,
+    width: 140,
   },
 });
 
